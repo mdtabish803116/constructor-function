@@ -1,6 +1,8 @@
 var products = JSON.parse(localStorage.getItem("products"))||[];
 
+
 document.querySelector("form").addEventListener("submit" , function(e){
+
     e.preventDefault();
 
     var product = document.getElementById("product").value;
@@ -30,5 +32,24 @@ document.querySelector("form").addEventListener("submit" , function(e){
 
      localStorage.setItem("products" , JSON.stringify(products));
 
+     window.location.reload();
+
    }
 })
+
+    productCount();
+   function productCount(){
+
+    var products = JSON.parse(localStorage.getItem("products"));
+         var textDiv = document.createElement("div");
+           textDiv.textContent = "Product added : ";
+           var countDiv = document.createElement("div");
+     if(products == null){  
+          countDiv.textContent = "0";
+     }else {
+        countDiv.textContent = products.length;
+     }
+
+     document.getElementById("productCounter").append(textDiv , countDiv);
+
+   }
